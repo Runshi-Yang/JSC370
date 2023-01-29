@@ -1,0 +1,51 @@
+---
+title: "Assignment 01 - Exploratory Data Analysis"
+author: "RunshiYang"
+output:
+  html_document:
+    theme: spacelab
+    highlight: tango
+---
+
+```{r setup, message=FALSE, echo=FALSE, warning=FALSE}
+# install.packages(c("data.table","leaflet"))
+library(data.table)
+library(leaflet)
+library(tidyverse)
+```
+
+## Step 1: Read in the data and check
+
+#### Read in the data
+
+#### Update the missing data identifiers to NA.
+
+#### Check for import issues.
+
+#### Check for any data issues particularly in the key variable we are analyzing.
+
+#### Summary of my findings:
+
+
+## Step 2: Clean the data
+
+#### Keep only necessary columns and change the names of the key variables so that they are easier to identify.
+
+#### Change the type of key variables from string to factor as appropriate.
+
+#### Identify any outlier reports, and justify how you handle them.
+
+
+## Step 3: Explore the main question of interest
+
+#### Calculate summary statistics for each season.
+
+#### Conduct basic analyses that enable me to compare across winter/spring/summer/fall.
+
+#### Explanations of what I observe in these data:
+
+
+## Step 4: Create exploratory plots
+
+
+## Step 5: Create a basic map
