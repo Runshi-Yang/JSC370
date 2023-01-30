@@ -17,15 +17,52 @@ library(tidyverse)
 ## Step 1: Read in the data and check
 
 #### Read in the data
+```{r, eval=FALSE}
+fn <- "https://github.com/Runshi-Yang/JSC370/blob/main/assignments/a1/Bicycle_Thefts.csv"
+if (!file.exists("Bicycle_Thefts.csv"))
+  download.file(fn, destfile = "Bicycle_Thefts.csv")
+data <- data.table::fread("Bicycle_Thefts.csv")
+```
 
 #### Update the missing data identifiers to NA.
+```{r, eval=FALSE}
+# Use the following function to check the class as well as the dimensions of the data
+str(data)
+# Use the following function to check variables more closely and discover that the missing values
+# are represented by "NULL"
+table(data$Bike_Model)
+table(data$ Bike_Colour)
+# update the missing data identifiers to NA.
+data[data == "NULL"] <- NA
+```
 
 #### Check for import issues.
+```{r, eval=FALSE}
+# dimension
+dim(data)
+
+# header
+head(data)
+
+# footer
+tail(data)
+
+# check variable names and types
+str(data)
+```
 
 #### Check for any data issues particularly in the key variable we are analyzing.
+```{r, eval=FALSE}
+# make a summary of the data
+summary(data)
+
+# delete the error data
+data <- data[Longitude < 0]
+data <- data[Latitude > 0]
+```
 
 #### Summary of my findings:
-
+The original dataset has 30154 observations of 35 variables. 20 variables are of type string, 11 of them are integers and 4 of them are floating point numbers. When looking at the headers and footers of the table, I discovered that there is a variable called "OBJECTID" and another variable called "ObjectId2", they record exactly the same data, so this is a duplicate. And I found that the missing values are represented by "NULL" at first and I updated all of them to _NA_. Notice that the maximum longitude and the minimum latitude of the stolen bike are all 0 's. However, Toronto's longitude and latitude are around 79 and 43. So I believe that the observations with 0 longitude and latitude are errors and I deleted them from the dataset. I also notice that the median and mean of bike speed are around 15 however the maximum bike speed is 99. But I didn't fix this error because this is not relevant to the question we are studying.
 
 ## Step 2: Clean the data
 
