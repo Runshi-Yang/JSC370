@@ -1,1 +1,48 @@
+---
+title: "Assignment 02 - Data Viz, Wrangling and Advanced Regression"
+author: "RunshiYang"
+output:
+  html_document:
+    theme: spacelab
+    highlight: tango
+---
 
+```{r setup, message=FALSE, echo=FALSE, warning=FALSE}
+library(data.table)
+library(tidyverse)
+library(ggplot2)
+```
+
+## Data Wrangling
+
+1. Put the life expectancy data in “tidy” format by creating a new column “Sex”. You may want to use `pivot_longer` function from the tidyr package.
+
+2. Filter the alcohol consumption data to exclude rows with data for “Both sexes”.
+
+3. For conveinence, you may rename any variables which have complicated names.
+
+4. Merge these datasets by country name and year
+
+5. Create a summary tables showing the average and sd of life expectancy and alcohol consumption by year, and sex.
+
+6. Create a new categorical variable named “consumption_level” using the alcohol total per capita variable. For female and male separately, calculate the quartiles of alcohol consumption. Categorize consumption level as low (0-q1) medium (q1-q3), and high (q3+). To make sure the variable is rightly coded, create a summary table that contains the minimum total alcohol consumption, maximum alcohol consumption, and number of observations for each category.
+
+
+## Looking at the Data
+
+1. Stacked histogram of alcohol consumption by sex.
+
+2. Facet plot by year for 2000, 2010, and 2019 showing scatterplots with regression lines of life expectancy and alcohol consumption.
+
+3. A linear model of life expectancy as a function of time, adjusted for sex. Compare the summary for Canada, and a second country of your choice.
+
+4. A barplot of male and female life expectancy for the 10 countries with largest discrepancies in 2019.
+
+5. A boxplot of life expectancy by alcohol consumption level and sex for the year 2019.
+
+6. Choose a visualization to examine the association life expectancy with alcohol consumption over time.
+
+
+## Advanced Regression
+
+Construct a multiple linear regression model to examine the association between alcohol consumption and life expectancy, adjusted for time and sex. First use time as a linear predictor variable, and then fit another model where you put a cubic regression spline on time. Provide summaries of your models, plots of the linear and non-linear associations, and interpretation of the linear and non-linear associations.

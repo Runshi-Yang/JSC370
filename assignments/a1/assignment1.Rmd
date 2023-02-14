@@ -12,28 +12,33 @@ output:
 library(data.table)
 library(leaflet)
 library(tidyverse)
+library(ggplot2)
 ```
 
 ## Step 1: Read in the data and check
 
 #### Read in the data
-```{r, eval=FALSE}
+```{r}
 fn <- "https://github.com/Runshi-Yang/JSC370/blob/main/assignments/a1/Bicycle_Thefts.csv"
 if (!file.exists("Bicycle_Thefts.csv"))
   download.file(fn, destfile = "Bicycle_Thefts.csv")
 data <- data.table::fread("Bicycle_Thefts.csv")
 ```
 
-#### Update the missing data identifiers to NA.
 ```{r, eval=FALSE}
-# Use the following function to check the class as well as the dimensions of the data
-str(data)
-# Use the following function to check variables more closely and discover that the missing values
-# are represented by "NULL"
-table(data$Bike_Model)
-table(data$ Bike_Colour)
+# header
+head(data)
+
+# footer
+tail(data)
+```
+
+#### Update the missing data identifiers to NA.
+```{r}
 # update the missing data identifiers to NA.
 data[data == "NULL"] <- NA
+data[data == "NSA"] <- NA
+data[data == ""] <- NA
 ```
 
 #### Check for import issues.
@@ -41,48 +46,137 @@ data[data == "NULL"] <- NA
 # dimension
 dim(data)
 
-# header
-head(data)
-
-# footer
-tail(data)
-
-# check variable names and types
+# Use the following function to check the class as well as the dimensions of the data
 str(data)
+
+# Use the following function to check variables more closely and discover that the missing values
+# are represented by "NULL"
+table(data$Bike_Model)
+table(data$Bike_Colour)
+table(data$City)
 ```
 
 #### Check for any data issues particularly in the key variable we are analyzing.
 ```{r, eval=FALSE}
 # make a summary of the data
 summary(data)
+```
 
+```{r}
 # delete the error data
 data <- data[Longitude < 0]
 data <- data[Latitude > 0]
+data <- data[City == 'Toronto']
 ```
 
 #### Summary of my findings:
-The original dataset has 30154 observations of 35 variables. 20 variables are of type string, 11 of them are integers and 4 of them are floating point numbers. When looking at the headers and footers of the table, I discovered that there is a variable called "OBJECTID" and another variable called "ObjectId2", they record exactly the same data, so this is a duplicate. And I found that the missing values are represented by "NULL" at first and I updated all of them to _NA_. Notice that the maximum longitude and the minimum latitude of the stolen bike are all 0 's. However, Toronto's longitude and latitude are around 79 and 43. So I believe that the observations with 0 longitude and latitude are errors and I deleted them from the dataset. I also notice that the median and mean of bike speed are around 15 however the maximum bike speed is 99. But I didn't fix this error because this is not relevant to the question we are studying.
+The original dataset has 30154 observations of 35 variables. 20 variables are of type string, 11 of them are integers and 4 of them are floating point numbers. When looking at the headers and footers of the table, I discovered that there is a variable called "OBJECTID" and another variable called "ObjectId2", they record exactly the same data. And event_unique_id is also used to identify different observations so this is a duplicate. And I found that the missing values are represented by "NULL", "NSA" and empty string at first and I updated all of them to _NA_. Notice that the maximum longitude and the minimum latitude of the stolen bike are all 0 's. However, Toronto's longitude and latitude are around 79 and 43. So I believe that the observations with 0 longitude and latitude are errors and I deleted them from the dataset. And there are 124 cases with city value "NSA", so I also delete those observations. I notice that the median and mean of bike speed are around 15 however the maximum bike speed is 99. But I didn't fix this error because this is not relevant to the question we are studying. After doing all of these, there remains 29840 observations.
 
 ## Step 2: Clean the data
 
 #### Keep only necessary columns and change the names of the key variables so that they are easier to identify.
+```{r}
+data <- data %>% select(c('OBJECTID', 'Occurrence_Year', 'Occurrence_Month', 'Occurrence_DayOfMonth', 
+                          'Occurrence_DayOfWeek', 'Occurrence_DayOfYear', 'Occurrence_Hour', 'Hood_ID',
+                          'NeighbourhoodName', 'Location_Type', 'Premises_Type', 'Bike_Colour', 'Cost_of_Bike', 
+                          'Bike_Type', 'Longitude', 'Latitude'))
+
+colnames(data) <- c('id', 'year', 'month', 'month_day', 'week_day', 'year_day', 'hour', 'hood_id', 'hood_name',
+                    'location_type', 'premises_type', 'bike_color', 'bike_price', 'bike_type', 'longitude', 'latitude')
+```
 
 #### Change the type of key variables from string to factor as appropriate.
+```{r}
+data$hood_id <- strtoi(data$hood_id)
+data$bike_price <- strtoi(data$bike_price)
+```
 
 #### Identify any outlier reports, and justify how you handle them.
+```{r}
+boxplot(data$bike_price, col = "pink")
+boxplot(data$longitude, col = "pink")
+boxplot(data$latitude, col = "pink")
+clean_data <- data[longitude > min(longitude)]
+```
+There are many bikes with extremely high price ($> p_{0.75} + 1.5 IQR$), which may be influential points when we build a regression model. However, I don't think these are error data -- if you google “Carbon Fiber Bicycle” you will find that these prices are "reasonable". And the theft of such a valuable bicycle must be a very serious case, so it is necessary for us to keep this record. Since we have no valid reason to delete them, we will just keep these outliers.
 
+There is one data point's longitude much larger than others, and one data point's latitude much smaller than others (which is actually the same point). If we show it on the map, we will see that it is very far from Toronto (near Ajax). I don't think including this data point will help police officers in Toronto to have a better idea about where are bicycles stolen, so I decide to remove it from the dataset.
 
 ## Step 3: Explore the main question of interest
 
 #### Calculate summary statistics for each season.
+```{r}
+season_data <- clean_data %>% mutate(season = case_when(
+  month =="March" | month =="April" | month =="May" ~ "spring", 
+  month =="June" | month =="July" | month =="August"  ~ "summer", 
+  month =="September" | month =="October" | month =="November" ~ "fall", 
+  month =="December" | month =="January" | month =="February" ~ "winter")) %>% 
+  group_by(year, season) %>% 
+  summarise(count = n())
+
+
+season_data %>% 
+  group_by(season) %>% 
+  summarise(mean_count = mean(count),
+            median_count = median(count),
+            var_count = var(count))
+```
 
 #### Conduct basic analyses that enable me to compare across winter/spring/summer/fall.
+```{r}
+model <- lm(count ~ season, data=season_data)
+summary(model)
+anova(model)
+```
 
 #### Explanations of what I observe in these data:
-
+From 2009 to 2022, the average number of lost bicycles per spring summer fall and winter is 740, 586, 1,068 and 244 respectively. This figure fluctuates more in the fall and summer. If we fit a linear model $y = \beta_0 + \beta_1 I\{x = \mbox{spring}\} + \beta_2 I\{x = \mbox{summer}\} + \beta_2 I\{x = \mbox{winter}\}$ where $y$ is the number of bike being stolen per season, and $x$ is the categorical variable season. The estimation of $\beta_0, \beta_1, \beta_2$ and $\beta_3$ are 740.3, -154.3, 327.3 and -496.4 respectively, which means that we expect 740 bicycles to be lost in the fall, while the numbers lost in the spring, winter and summer will differ by -154, 327 and 496 respectively. Multiple R-squared suggested that 28.87\% of the variation in the number of lost bicycle that can be explained by the variable season. And with anova f test, we get a p-value less than 0.05, so we reject the null hypothesis and conclude that this model is useful.
 
 ## Step 4: Create exploratory plots
+```{r}
+clean_data %>% 
+  filter(!is.na(hood_name)) %>% 
+  group_by(hood_name) %>%
+  count() %>%
+  filter(n > 200) %>%
+  ggplot() +
+  geom_bar(aes(x = hood_name, y = n), color = 'black', fill = "pink", stat = "identity") +
+  theme_minimal() +
+  coord_flip() +
+  labs(title = "Neighbourhoods where bikes were reported stolen from", x = "neighbourhood name", y = "count")
 
+```
+
+```{r}
+ggplot(clean_data) +
+  geom_histogram(aes(x = hour), color = 'black', fill = "pink", bins = 24) +
+  theme_minimal() +
+  labs(title = "Time of day bikes were reported stolen from", x = "time of day (h)", y = "count")
+
+```
 
 ## Step 5: Create a basic map
+```{r, warning=FALSE}
+# error when knitting
+#  factpal <- colorFactor(topo.colors(20), data$bike_color)
+# 
+# data %>%
+# leaflet() %>%
+# addProviderTiles('OpenStreetMap') %>%
+# addCircles(lat=~latitude, lng=~longitude, opacity=1, fillOpacity=1, color=~factpal(bike_color), radius=5)
+# 
+
+un_data = clean_data %>% filter(bike_type == "UN")
+table(un_data$bike_color)
+un_data <- un_data %>% mutate(bike_color = case_when(
+  bike_color=="BLK" ~ "black", 
+  bike_color=="GRN" ~ "green", 
+  bike_color=="GRY" ~ "gray", 
+  bike_color=="WHI" ~ "white", 
+  bike_color=="RED" ~ "red"
+))
+
+leaflet(un_data) %>%
+  addProviderTiles('OpenStreetMap') %>%
+  addCircles(lat=~latitude, lng=~longitude, opacity=1, fillOpacity=1, color = ~bike_color, radius=5)
+```
