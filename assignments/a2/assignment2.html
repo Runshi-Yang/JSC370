@@ -232,6 +232,230 @@ window.buildTabsets = function(tocID) {
 };
 
 </script>
+<script>$(document).ready(function(){
+    if (typeof $('[data-toggle="tooltip"]').tooltip === 'function') {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+    if ($('[data-toggle="popover"]').popover === 'function') {
+        $('[data-toggle="popover"]').popover();
+    }
+});
+</script>
+<style type="text/css">
+.lightable-minimal {
+border-collapse: separate;
+border-spacing: 16px 1px;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-minimal td {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal th {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal thead tr:last-child th {
+border-bottom: 2px solid #00000050;
+empty-cells: hide;
+}
+.lightable-minimal tbody tr:first-child td {
+padding-top: 0.5em;
+}
+.lightable-minimal.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-minimal.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic {
+border-top: 0.16em solid #111111;
+border-bottom: 0.16em solid #111111;
+width: 100%;
+margin-bottom: 10px;
+margin: 10px 5px;
+}
+.lightable-classic tfoot tr td {
+border: 0;
+}
+.lightable-classic tfoot tr:first-child td {
+border-top: 0.14em solid #111111;
+}
+.lightable-classic caption {
+color: #222222;
+}
+.lightable-classic td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic thead tr:last-child th {
+border-bottom: 0.10em solid #111111;
+}
+.lightable-classic.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic-2 {
+border-top: 3px double #111111;
+border-bottom: 3px double #111111;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-classic-2 tfoot tr td {
+border: 0;
+}
+.lightable-classic-2 tfoot tr:first-child td {
+border-top: 3px double #111111;
+}
+.lightable-classic-2 caption {
+color: #222222;
+}
+.lightable-classic-2 td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic-2 th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic-2 tbody tr:last-child td {
+border-bottom: 3px double #111111;
+}
+.lightable-classic-2 thead tr:last-child th {
+border-bottom: 1px solid #111111;
+}
+.lightable-classic-2.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic-2.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #EEE;
+border-collapse: collapse;
+margin-bottom: 10px;
+}
+.lightable-material tfoot tr td {
+border: 0;
+}
+.lightable-material tfoot tr:first-child td {
+border-top: 1px solid #EEE;
+}
+.lightable-material th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+}
+.lightable-material td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+border-top: 1px solid #eeeeee;
+}
+.lightable-material.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #ddd;
+}
+.lightable-material-dark {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #FFFFFF12;
+border-collapse: collapse;
+margin-bottom: 10px;
+background-color: #363640;
+}
+.lightable-material-dark tfoot tr td {
+border: 0;
+}
+.lightable-material-dark tfoot tr:first-child td {
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF60;
+}
+.lightable-material-dark td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF;
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark.lightable-hover tbody tr:hover {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody tr:nth-child(even) {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material-dark.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #FFFFFF12;
+}
+.lightable-paper {
+width: 100%;
+margin-bottom: 10px;
+color: #444;
+}
+.lightable-paper tfoot tr td {
+border: 0;
+}
+.lightable-paper tfoot tr:first-child td {
+border-top: 1px solid #00000020;
+}
+.lightable-paper thead tr:last-child th {
+color: #666;
+vertical-align: bottom;
+border-bottom: 1px solid #00000020;
+line-height: 1.15em;
+padding: 10px 5px;
+}
+.lightable-paper td {
+vertical-align: middle;
+border-bottom: 1px solid #00000010;
+line-height: 1.15em;
+padding: 7px 5px;
+}
+.lightable-paper.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-paper.lightable-striped tbody tr:nth-child(even) {
+background-color: #00000008;
+}
+.lightable-paper.lightable-striped tbody td {
+border: 0;
+}
+</style>
 
 <style type="text/css">
 code{white-space: pre-wrap;}
@@ -244,6 +468,99 @@ ul.task-list{list-style: none;}
 
 
 
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } 
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } 
+code span.at { color: #c4a000; } 
+code span.bn { color: #0000cf; } 
+code span.cf { color: #204a87; font-weight: bold; } 
+code span.ch { color: #4e9a06; } 
+code span.cn { color: #000000; } 
+code span.co { color: #8f5902; font-style: italic; } 
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } 
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } 
+code span.dt { color: #204a87; } 
+code span.dv { color: #0000cf; } 
+code span.er { color: #a40000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #0000cf; } 
+code span.fu { color: #000000; } 
+code span.im { } 
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } 
+code span.kw { color: #204a87; font-weight: bold; } 
+code span.op { color: #ce5c00; font-weight: bold; } 
+code span.ot { color: #8f5902; } 
+code span.pp { color: #8f5902; font-style: italic; } 
+code span.sc { color: #000000; } 
+code span.ss { color: #4e9a06; } 
+code span.st { color: #4e9a06; } 
+code span.va { color: #000000; } 
+code span.vs { color: #4e9a06; } 
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -357,27 +674,1002 @@ Advanced Regression</h1>
 </div>
 
 
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fn <span class="ot">&lt;-</span> <span class="st">&quot;https://github.com/Runshi-Yang/JSC370/blob/main/assignments/a2/WHOAlcoholTotalPerCapita_2021-09-20v2.csv&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(<span class="st">&quot;WHOAlcoholTotalPerCapita_2021-09-20v2.csv&quot;</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(fn, <span class="at">destfile =</span> <span class="st">&quot;WHOAlcoholTotalPerCapita_2021-09-20v2.csv&quot;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>alcohol_cons <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">&quot;WHOAlcoholTotalPerCapita_2021-09-20v2.csv&quot;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>fn <span class="ot">&lt;-</span> <span class="st">&quot;https://github.com/Runshi-Yang/JSC370/blob/main/assignments/a2/life-expectancy-of-women-vs-life-expectancy-of-women.csv&quot;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(<span class="st">&quot;life-expectancy-of-women-vs-life-expectancy-of-women.csv&quot;</span>))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(fn, <span class="at">destfile =</span> <span class="st">&quot;life-expectancy-of-women-vs-life-expectancy-of-women.csv&quot;</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>life_exp <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">&quot;life-expectancy-of-women-vs-life-expectancy-of-women.csv&quot;</span>)</span></code></pre></div>
 <div id="data-wrangling" class="section level2">
 <h2>Data Wrangling</h2>
 <ol style="list-style-type: decimal">
-<li><p>Put the life expectancy data in “tidy” format by creating a new
+<li>Put the life expectancy data in “tidy” format by creating a new
 column “Sex”. You may want to use <code>pivot_longer</code> function
-from the tidyr package.</p></li>
-<li><p>Filter the alcohol consumption data to exclude rows with data for
-“Both sexes”.</p></li>
-<li><p>For conveinence, you may rename any variables which have
-complicated names.</p></li>
-<li><p>Merge these datasets by country name and year</p></li>
-<li><p>Create a summary tables showing the average and sd of life
-expectancy and alcohol consumption by year, and sex.</p></li>
-<li><p>Create a new categorical variable named “consumption_level” using
+from the <code>tidyr</code> package.</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(life_exp)[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Population&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>life_exp <span class="ot">&lt;-</span> life_exp <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;Female&quot;</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;Male&quot;</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Sex&quot;</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;Life_Expectancy&quot;</span>)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Filter the alcohol consumption data to exclude rows with data for
+“Both sexes”.</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>alcohol_cons <span class="ot">&lt;-</span> alcohol_cons <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Sex <span class="sc">!=</span> <span class="st">&quot;Both sexes&quot;</span>)</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>For conveinence, you may rename any variables which have complicated
+names.</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(life_exp)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Country&quot;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(alcohol_cons)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Region_Code&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(alcohol_cons)[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Region&quot;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(alcohol_cons)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Country_Code&quot;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(alcohol_cons)[<span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Consumption_Numeric&quot;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(alcohol_cons)[<span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Consumption_Low_Est&quot;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(alcohol_cons)[<span class="dv">9</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Consumption_High_Est&quot;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(alcohol_cons)[<span class="dv">10</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Consumption_String&quot;</span></span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Merge these datasets by country name and year</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">merge</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  life_exp, alcohol_cons, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">by.x =</span> <span class="fu">c</span>(<span class="st">&#39;Country&#39;</span>, <span class="st">&#39;Year&#39;</span>, <span class="st">&#39;Sex&#39;</span>), </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">by.y =</span> <span class="fu">c</span>(<span class="st">&#39;Country&#39;</span>, <span class="st">&#39;Year&#39;</span>, <span class="st">&#39;Sex&#39;</span>),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">all.x =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">all.y =</span> <span class="cn">FALSE</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># before we proceed, check if there is any missing data</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(data))</span></code></pre></div>
+<pre><code>##              Country                 Year                  Sex 
+##                    0                    0                    0 
+##                 Code           Population            Continent 
+##                    0                    0                    0 
+##      Life_Expectancy          Region_Code               Region 
+##                    0                    0                    0 
+##         Country_Code  Consumption_Numeric  Consumption_Low_Est 
+##                    0                    0                    0 
+## Consumption_High_Est   Consumption_String 
+##                    0                    0</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Create a summary table showing the average and sd of life expectancy
+and alcohol consumption by year, and sex.</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data_by_year_sex <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year, Sex) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Avg_Life_Expectancy =</span> <span class="fu">mean</span>(Life_Expectancy),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Sd_Life_Expectancy =</span> <span class="fu">sd</span>(Life_Expectancy),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Avg_Consumption =</span> <span class="fu">mean</span>(Consumption_Numeric),</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Sd_Consumption =</span> <span class="fu">sd</span>(Consumption_Numeric)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>data_by_year_sex <span class="sc">%&gt;%</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>()</span></code></pre></div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Year
+</th>
+<th style="text-align:left;">
+Sex
+</th>
+<th style="text-align:right;">
+Avg_Life_Expectancy
+</th>
+<th style="text-align:right;">
+Sd_Life_Expectancy
+</th>
+<th style="text-align:right;">
+Avg_Consumption
+</th>
+<th style="text-align:right;">
+Sd_Consumption
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+69.14036
+</td>
+<td style="text-align:right;">
+10.571545
+</td>
+<td style="text-align:right;">
+2.523819
+</td>
+<td style="text-align:right;">
+2.164264
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+64.09157
+</td>
+<td style="text-align:right;">
+9.526031
+</td>
+<td style="text-align:right;">
+9.235145
+</td>
+<td style="text-align:right;">
+7.007668
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2001
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+69.44096
+</td>
+<td style="text-align:right;">
+10.645375
+</td>
+<td style="text-align:right;">
+2.523819
+</td>
+<td style="text-align:right;">
+2.164264
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2001
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+64.38735
+</td>
+<td style="text-align:right;">
+9.517500
+</td>
+<td style="text-align:right;">
+9.235145
+</td>
+<td style="text-align:right;">
+7.007668
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2002
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+69.71325
+</td>
+<td style="text-align:right;">
+10.525493
+</td>
+<td style="text-align:right;">
+2.518374
+</td>
+<td style="text-align:right;">
+2.159343
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2002
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+64.67289
+</td>
+<td style="text-align:right;">
+9.443737
+</td>
+<td style="text-align:right;">
+9.205151
+</td>
+<td style="text-align:right;">
+6.992798
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2003
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+69.97952
+</td>
+<td style="text-align:right;">
+10.466718
+</td>
+<td style="text-align:right;">
+2.518379
+</td>
+<td style="text-align:right;">
+2.146989
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2003
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+64.95482
+</td>
+<td style="text-align:right;">
+9.358519
+</td>
+<td style="text-align:right;">
+9.192428
+</td>
+<td style="text-align:right;">
+6.937405
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2004
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+70.26145
+</td>
+<td style="text-align:right;">
+10.352038
+</td>
+<td style="text-align:right;">
+2.534066
+</td>
+<td style="text-align:right;">
+2.126814
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2004
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+65.28072
+</td>
+<td style="text-align:right;">
+9.277676
+</td>
+<td style="text-align:right;">
+9.236566
+</td>
+<td style="text-align:right;">
+6.852761
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2005
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+70.67410
+</td>
+<td style="text-align:right;">
+10.235689
+</td>
+<td style="text-align:right;">
+2.568946
+</td>
+<td style="text-align:right;">
+2.141408
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2005
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+65.61988
+</td>
+<td style="text-align:right;">
+9.186790
+</td>
+<td style="text-align:right;">
+9.332512
+</td>
+<td style="text-align:right;">
+6.862059
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2006
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+71.08133
+</td>
+<td style="text-align:right;">
+10.076397
+</td>
+<td style="text-align:right;">
+2.602223
+</td>
+<td style="text-align:right;">
+2.159834
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2006
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+65.98976
+</td>
+<td style="text-align:right;">
+9.091239
+</td>
+<td style="text-align:right;">
+9.415946
+</td>
+<td style="text-align:right;">
+6.897050
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2007
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+71.45179
+</td>
+<td style="text-align:right;">
+9.862309
+</td>
+<td style="text-align:right;">
+2.666607
+</td>
+<td style="text-align:right;">
+2.204951
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2007
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+66.36250
+</td>
+<td style="text-align:right;">
+8.897687
+</td>
+<td style="text-align:right;">
+9.623006
+</td>
+<td style="text-align:right;">
+7.063432
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+71.78690
+</td>
+<td style="text-align:right;">
+9.729094
+</td>
+<td style="text-align:right;">
+2.628405
+</td>
+<td style="text-align:right;">
+2.169372
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+66.72679
+</td>
+<td style="text-align:right;">
+8.811584
+</td>
+<td style="text-align:right;">
+9.498554
+</td>
+<td style="text-align:right;">
+6.967984
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+72.17024
+</td>
+<td style="text-align:right;">
+9.494250
+</td>
+<td style="text-align:right;">
+2.589732
+</td>
+<td style="text-align:right;">
+2.104763
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+67.11310
+</td>
+<td style="text-align:right;">
+8.632778
+</td>
+<td style="text-align:right;">
+9.402869
+</td>
+<td style="text-align:right;">
+6.799430
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+72.43036
+</td>
+<td style="text-align:right;">
+9.476348
+</td>
+<td style="text-align:right;">
+2.558833
+</td>
+<td style="text-align:right;">
+2.043933
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+67.42976
+</td>
+<td style="text-align:right;">
+8.645822
+</td>
+<td style="text-align:right;">
+9.328167
+</td>
+<td style="text-align:right;">
+6.627876
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2011
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+72.88690
+</td>
+<td style="text-align:right;">
+9.043041
+</td>
+<td style="text-align:right;">
+2.573530
+</td>
+<td style="text-align:right;">
+2.030884
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2011
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+67.84762
+</td>
+<td style="text-align:right;">
+8.360751
+</td>
+<td style="text-align:right;">
+9.399952
+</td>
+<td style="text-align:right;">
+6.609517
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+73.19643
+</td>
+<td style="text-align:right;">
+8.772206
+</td>
+<td style="text-align:right;">
+2.574446
+</td>
+<td style="text-align:right;">
+2.021947
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+68.20714
+</td>
+<td style="text-align:right;">
+8.196615
+</td>
+<td style="text-align:right;">
+9.408821
+</td>
+<td style="text-align:right;">
+6.597133
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+73.52976
+</td>
+<td style="text-align:right;">
+8.599322
+</td>
+<td style="text-align:right;">
+2.565054
+</td>
+<td style="text-align:right;">
+2.001680
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+68.50298
+</td>
+<td style="text-align:right;">
+8.075619
+</td>
+<td style="text-align:right;">
+9.392661
+</td>
+<td style="text-align:right;">
+6.546354
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+73.83810
+</td>
+<td style="text-align:right;">
+8.482746
+</td>
+<td style="text-align:right;">
+2.545667
+</td>
+<td style="text-align:right;">
+1.973115
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+68.75774
+</td>
+<td style="text-align:right;">
+8.014385
+</td>
+<td style="text-align:right;">
+9.340637
+</td>
+<td style="text-align:right;">
+6.457291
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+74.04524
+</td>
+<td style="text-align:right;">
+8.259147
+</td>
+<td style="text-align:right;">
+2.534435
+</td>
+<td style="text-align:right;">
+1.953997
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+68.97917
+</td>
+<td style="text-align:right;">
+7.839031
+</td>
+<td style="text-align:right;">
+9.318810
+</td>
+<td style="text-align:right;">
+6.406935
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+74.39524
+</td>
+<td style="text-align:right;">
+8.108581
+</td>
+<td style="text-align:right;">
+2.522512
+</td>
+<td style="text-align:right;">
+1.934788
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+69.27083
+</td>
+<td style="text-align:right;">
+7.707702
+</td>
+<td style="text-align:right;">
+9.292619
+</td>
+<td style="text-align:right;">
+6.362486
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+74.62202
+</td>
+<td style="text-align:right;">
+7.952263
+</td>
+<td style="text-align:right;">
+2.514018
+</td>
+<td style="text-align:right;">
+1.917295
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+69.48988
+</td>
+<td style="text-align:right;">
+7.622961
+</td>
+<td style="text-align:right;">
+9.273512
+</td>
+<td style="text-align:right;">
+6.321538
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+74.85833
+</td>
+<td style="text-align:right;">
+7.835092
+</td>
+<td style="text-align:right;">
+2.507702
+</td>
+<td style="text-align:right;">
+1.912398
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+69.70655
+</td>
+<td style="text-align:right;">
+7.547424
+</td>
+<td style="text-align:right;">
+9.257309
+</td>
+<td style="text-align:right;">
+6.312783
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+75.05893
+</td>
+<td style="text-align:right;">
+7.734047
+</td>
+<td style="text-align:right;">
+2.507702
+</td>
+<td style="text-align:right;">
+1.912398
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+69.90417
+</td>
+<td style="text-align:right;">
+7.478139
+</td>
+<td style="text-align:right;">
+9.257309
+</td>
+<td style="text-align:right;">
+6.312783
+</td>
+</tr>
+</tbody>
+</table>
+<ol start="6" style="list-style-type: decimal">
+<li>Create a new categorical variable named “consumption_level” using
 the alcohol total per capita variable. For female and male separately,
 calculate the quartiles of alcohol consumption. Categorize consumption
 level as low (0-q1) medium (q1-q3), and high (q3+). To make sure the
 variable is rightly coded, create a summary table that contains the
 minimum total alcohol consumption, maximum alcohol consumption, and
-number of observations for each category.</p></li>
+number of observations for each category.</li>
 </ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Quartiles for females</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>female_quartiles <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Sex <span class="sc">==</span> <span class="st">&quot;Female&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">q1 =</span> <span class="fu">quantile</span>(Consumption_Numeric, <span class="fl">0.25</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">q3 =</span> <span class="fu">quantile</span>(Consumption_Numeric, <span class="fl">0.75</span>))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Quartiles for males</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>male_quartiles <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Sex <span class="sc">==</span> <span class="st">&quot;Male&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">q1 =</span> <span class="fu">quantile</span>(Consumption_Numeric, <span class="fl">0.25</span>),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">q3 =</span> <span class="fu">quantile</span>(Consumption_Numeric, <span class="fl">0.75</span>))</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new categorical variable named “Consumption_Level”</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Consumption_Numeric)) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Consumption_Level =</span> <span class="fu">case_when</span>(</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    Sex <span class="sc">==</span> <span class="st">&#39;Female&#39;</span> <span class="sc">&amp;</span> Consumption_Numeric <span class="sc">&lt;=</span> female_quartiles<span class="sc">$</span>q1 <span class="sc">~</span> <span class="st">&#39;low&#39;</span>,</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    Sex <span class="sc">==</span> <span class="st">&#39;Female&#39;</span> <span class="sc">&amp;</span> Consumption_Numeric <span class="sc">&gt;</span> female_quartiles<span class="sc">$</span>q1 <span class="sc">&amp;</span> Consumption_Numeric <span class="sc">&lt;=</span> female_quartiles<span class="sc">$</span>q3 <span class="sc">~</span> <span class="st">&#39;medium&#39;</span>,</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    Sex <span class="sc">==</span> <span class="st">&#39;Female&#39;</span> <span class="sc">&amp;</span> Consumption_Numeric <span class="sc">&gt;</span> female_quartiles<span class="sc">$</span>q3 <span class="sc">~</span> <span class="st">&#39;high&#39;</span>,</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    Sex <span class="sc">==</span> <span class="st">&#39;Male&#39;</span> <span class="sc">&amp;</span> Consumption_Numeric <span class="sc">&lt;=</span> male_quartiles<span class="sc">$</span>q1 <span class="sc">~</span> <span class="st">&#39;low&#39;</span>,</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    Sex <span class="sc">==</span> <span class="st">&#39;Male&#39;</span> <span class="sc">&amp;</span> Consumption_Numeric <span class="sc">&gt;</span> male_quartiles<span class="sc">$</span>q1 <span class="sc">&amp;</span> Consumption_Numeric <span class="sc">&lt;=</span> male_quartiles<span class="sc">$</span>q3 <span class="sc">~</span> <span class="st">&#39;medium&#39;</span>,</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    Sex <span class="sc">==</span> <span class="st">&#39;Male&#39;</span> <span class="sc">&amp;</span> Consumption_Numeric <span class="sc">&gt;</span> male_quartiles<span class="sc">$</span>q3 <span class="sc">~</span> <span class="st">&#39;high&#39;</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a summary table</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>summary_by_sex <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">Min_Consumption =</span> <span class="fu">min</span>(Consumption_Numeric),</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">Max_Consumption =</span> <span class="fu">max</span>(Consumption_Numeric),</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">Num_Observation =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(Consumption_Numeric))</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>summary_by_sex <span class="sc">%&gt;%</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>()</span></code></pre></div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Sex
+</th>
+<th style="text-align:right;">
+Min_Consumption
+</th>
+<th style="text-align:right;">
+Max_Consumption
+</th>
+<th style="text-align:right;">
+Num_Observation
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+9.69
+</td>
+<td style="text-align:right;">
+3346
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+31.44
+</td>
+<td style="text-align:right;">
+3346
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="looking-at-the-data" class="section level2">
 <h2>Looking at the Data</h2>

@@ -9,24 +9,123 @@ output:
 
 ```{r setup, message=FALSE, echo=FALSE, warning=FALSE}
 library(data.table)
+library(tidyr)
+library(kableExtra)
 library(tidyverse)
 library(ggplot2)
 ```
 
+```{r}
+fn <- "https://github.com/Runshi-Yang/JSC370/blob/main/assignments/a2/WHOAlcoholTotalPerCapita_2021-09-20v2.csv"
+if (!file.exists("WHOAlcoholTotalPerCapita_2021-09-20v2.csv"))
+  download.file(fn, destfile = "WHOAlcoholTotalPerCapita_2021-09-20v2.csv")
+alcohol_cons <- data.table::fread("WHOAlcoholTotalPerCapita_2021-09-20v2.csv")
+
+fn <- "https://github.com/Runshi-Yang/JSC370/blob/main/assignments/a2/life-expectancy-of-women-vs-life-expectancy-of-women.csv"
+if (!file.exists("life-expectancy-of-women-vs-life-expectancy-of-women.csv"))
+  download.file(fn, destfile = "life-expectancy-of-women-vs-life-expectancy-of-women.csv")
+life_exp <- data.table::fread("life-expectancy-of-women-vs-life-expectancy-of-women.csv")
+```
 ## Data Wrangling
 
-1. Put the life expectancy data in “tidy” format by creating a new column “Sex”. You may want to use `pivot_longer` function from the tidyr package.
+1. Put the life expectancy data in “tidy” format by creating a new column “Sex”. You may want to use `pivot_longer` function from the `tidyr` package.
+```{r}
+colnames(life_exp)[4:6] <- c("Female", "Male", "Population")
+life_exp <- life_exp %>%
+  pivot_longer(cols = c("Female",
+                        "Male"),
+               names_to = "Sex",
+               values_to = "Life_Expectancy")
+```
 
 2. Filter the alcohol consumption data to exclude rows with data for “Both sexes”.
+```{r}
+alcohol_cons <- alcohol_cons %>%
+  filter(Sex != "Both sexes")
+```
 
 3. For conveinence, you may rename any variables which have complicated names.
+```{r}
+colnames(life_exp)[1] <- "Country"
+colnames(alcohol_cons)[1] <- "Region_Code"
+colnames(alcohol_cons)[2] <- "Region"
+colnames(alcohol_cons)[3] <- "Country_Code"
+colnames(alcohol_cons)[7] <- "Consumption_Numeric"
+colnames(alcohol_cons)[8] <- "Consumption_Low_Est"
+colnames(alcohol_cons)[9] <- "Consumption_High_Est"
+colnames(alcohol_cons)[10] <- "Consumption_String"
+```
 
 4. Merge these datasets by country name and year
+```{r}
+data <- merge(
+  life_exp, alcohol_cons, 
+  by.x = c('Country', 'Year', 'Sex'), 
+  by.y = c('Country', 'Year', 'Sex'),
+  all.x = FALSE, 
+  all.y = FALSE
+)
+```
 
-5. Create a summary tables showing the average and sd of life expectancy and alcohol consumption by year, and sex.
+```{r}
+# before we proceed, check if there is any missing data
+colSums(is.na(data))
+```
+
+5. Create a summary table showing the average and sd of life expectancy and alcohol consumption by year, and sex.
+```{r, message=FALSE}
+data_by_year_sex <- data %>% 
+  group_by(Year, Sex) %>% 
+  summarise(
+    Avg_Life_Expectancy = mean(Life_Expectancy),
+    Sd_Life_Expectancy = sd(Life_Expectancy),
+    Avg_Consumption = mean(Consumption_Numeric),
+    Sd_Consumption = sd(Consumption_Numeric)
+  )
+data_by_year_sex %>%
+  kbl() %>%
+  kable_styling()
+```
 
 6. Create a new categorical variable named “consumption_level” using the alcohol total per capita variable. For female and male separately, calculate the quartiles of alcohol consumption. Categorize consumption level as low (0-q1) medium (q1-q3), and high (q3+). To make sure the variable is rightly coded, create a summary table that contains the minimum total alcohol consumption, maximum alcohol consumption, and number of observations for each category.
+```{r}
+# Quartiles for females
+female_quartiles <- data %>%
+  filter(Sex == "Female") %>%
+  summarize(q1 = quantile(Consumption_Numeric, 0.25),
+            q3 = quantile(Consumption_Numeric, 0.75))
 
+# Quartiles for males
+male_quartiles <- data %>%
+  filter(Sex == "Male") %>%
+  summarize(q1 = quantile(Consumption_Numeric, 0.25),
+            q3 = quantile(Consumption_Numeric, 0.75))
+
+# Create a new categorical variable named “Consumption_Level”
+data <- data %>% 
+  filter(!is.na(Consumption_Numeric)) %>% 
+  mutate(Consumption_Level = case_when(
+    Sex == 'Female' & Consumption_Numeric <= female_quartiles$q1 ~ 'low',
+    Sex == 'Female' & Consumption_Numeric > female_quartiles$q1 & Consumption_Numeric <= female_quartiles$q3 ~ 'medium',
+    Sex == 'Female' & Consumption_Numeric > female_quartiles$q3 ~ 'high',
+    Sex == 'Male' & Consumption_Numeric <= male_quartiles$q1 ~ 'low',
+    Sex == 'Male' & Consumption_Numeric > male_quartiles$q1 & Consumption_Numeric <= male_quartiles$q3 ~ 'medium',
+    Sex == 'Male' & Consumption_Numeric > male_quartiles$q3 ~ 'high'
+    ))
+
+# Create a summary table
+summary_by_sex <- data %>% 
+  group_by(Sex) %>% 
+  summarise(
+    Min_Consumption = min(Consumption_Numeric),
+    Max_Consumption = max(Consumption_Numeric),
+    Num_Observation = sum(!is.na(Consumption_Numeric))
+  )
+
+summary_by_sex %>%
+  kbl() %>%
+  kable_styling()
+```
 
 ## Looking at the Data
 
